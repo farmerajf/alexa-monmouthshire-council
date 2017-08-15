@@ -1,0 +1,16 @@
+{
+  "name": "alexa-monmouthshire-council",
+  "version": "1.0.0",
+  "description": "Unofficial Alexa skill for the Monmouthshire council",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Farmer",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-sdk": "^1.0.11",
+    "escape-html": "^1.0.3",
+    "node-rest-client": "^3.1.0"
+  }
+}

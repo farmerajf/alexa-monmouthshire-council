@@ -1,0 +1,12 @@
+service: alexa-monmouthshire-council 
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  timeout: 10
+
+functions:
+  handler:
+    handler: index.handler
+    events: 
+      - alexaSkill
