@@ -3,7 +3,7 @@ var client = new nodeRestClient();
 
 function getWasteCollectionsPromise() {
     return new Promise((resolve, reject) => {
-        client.get("https://yh2ww8hms2.execute-api.us-east-1.amazonaws.com/dev/getWasteCollections", function (data, response) {
+        client.get("https://5w7z6f1kae.execute-api.eu-west-1.amazonaws.com/dev/getWasteCollections", function (data, response) {
             resolve(data);
         });
     });

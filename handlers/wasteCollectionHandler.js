@@ -10,24 +10,28 @@ module.exports = {
 
         apiClient.getNextWasteCollectionPromise(convertedWasteType).then((response) => {
             console.log(convertedWasteType);
-            var soon = getSoon(response.daysAway);
-            
-            var responses = [
-                "The next waste collection is the " + response.collectionType + " " + soon + " on " + response.textDate + ".",
-                "Sure, the next collection is the " + response.collectionType + " " + soon + " on " + response.textDate + ".",
-                "OKay, " + soon + " on " + response.textDate + " there is a collection for the " + response.collectionType
-            ];
-            this.emit(':tell', escape(chooser.choose(responses)));
+            if (response === undefined) {
+                this.emit(':tell', "Oops, I'm not sure which type of collection you mean");
+            } else {
+                var soon = getSoon(response.daysAway);
+                
+                var responses = [
+                    "The next waste collection of the " + response.collectionType + " is " + soon + " on " + response.textDate + ".",
+                    "Sure, the next collection of the " + response.collectionType + " is " + soon + " on " + response.textDate + ".",
+                    "OKay, " + soon + " on " + response.textDate + " there is a collection for the " + response.collectionType
+                ];
+                this.emit(':tell', escape(chooser.choose(responses)));
+            }
         });
 	}
 };
 
 function convertWasteType(value) {
-    switch (value) {
-        case 'recycling':
-            return "Red & purple recycling bags";
-        case "black bag":
-            return "Household rubbish bag";
+    if (value.includes("recycling")) {
+        return "Red & purple recycling bags"; 
+    }
+    if (value.includes("black") || value.includes("general")) {
+        return "Household rubbish bag";
     }
 }
 
